@@ -23,13 +23,13 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.estimatedRowHeight = 120
         filteredData = businesses
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self as? UISearchResultsUpdating
+        searchController.searchResultsUpdater = self as UISearchResultsUpdating
         
         searchController.dimsBackgroundDuringPresentation = false
         
         searchController.searchBar.sizeToFit()
-        tableView.tableHeaderView = searchController.searchBar
-        
+        navigationItem.titleView = searchController.searchBar
+        searchController.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
         
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
